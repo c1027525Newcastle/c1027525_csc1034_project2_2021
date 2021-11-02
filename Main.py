@@ -5,7 +5,9 @@ class Contacts:
         self.Phone_num = phone_num
         self.Birthday = birthday
 
-def Main():
+#def create_new_contact():
+
+def main():
     try:
         choice = int(input("""What do you want to do:
     1) Create a new contact
@@ -32,10 +34,10 @@ def Main():
 
         else:
             print("You can oly choose from the 3 options")
-            Main()  #Should find a better way to loop it
+            main()
 
     except:
         print("Please choose one by inserting an integer")
-        Main()
+        main()
 
-Main()
+main()
