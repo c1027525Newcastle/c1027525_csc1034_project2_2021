@@ -115,6 +115,18 @@ def change_detail_contact():
     myfile = open("Contacts.txt", 'w')
     myfile.writelines(lines)
     myfile.close
+    main()
+
+
+def delete_contact():
+    with open("Contacts.txt", 'r') as myfile:
+        lines = myfile.readlines()
+    name = input("What is the name of the contact you want to delete")
+    length = len(name)
+    with open("Contacts.txt", 'w') as myfile:
+        for line in lines:
+            if line[:length] != name:
+                myfile.write(line)
 
 
 #def create_new_contact():
@@ -127,7 +139,8 @@ def main():
     2) Search for a contact
     3) Retrieve all contacts and their details
     4) Change the details of a contact
-    5) Close program
+    5) Delete a contact
+    6) Close program
     Answer:"""))
 
         if choice == 1:
@@ -154,6 +167,9 @@ def main():
             change_detail_contact()
 
         elif choice == 5:
+            delete_contact()
+
+        elif choice == 6:
             print("Closing App")
 
         else:
