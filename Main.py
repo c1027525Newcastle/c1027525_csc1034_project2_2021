@@ -39,6 +39,30 @@ def search_for_contact(choice2):
                     main()
                 line = MyFile.readline()
 
+    elif choice2 == 4:
+        birthday = input("Enter the birthday in the format dd/mm/yyyy?")
+        with open("Contacts.txt", 'r') as MyFile:
+            line = MyFile.readline()
+            while line != "":
+                newline = line.rstrip("\n").split(",") #need to strip \n########
+                if newline[3] == birthday:
+                    print("This is the contact with the birthday", birthday +":")
+                    print(newline)
+                    main()
+                line = MyFile.readline()
+
+    elif choice2 == 3:
+        address = input("Address?")
+        with open("Contacts.txt", 'r') as MyFile:
+            line = MyFile.readline()
+            while line != "":
+                newline = line.split(",")
+                if newline[1] == address:
+                    print("This is the contact with the address", address +":")
+                    print(newline)
+                    main()
+                line = MyFile.readline()
+
 def main():
     try:
         choice = int(input("""What do you want to do:
@@ -59,13 +83,17 @@ def main():
     3)Address
     4)Birthday
     Answer"""))
-            search_for_contact(choice2)
+            if choice2 == 1 or choice2 == 2 or choice2 == 3 or choice2 == 4:
+                search_for_contact(choice2)
+            else:
+                print("You can only choose from the 4 options")
+                main()
 
         elif choice == 3:
             print("Your choice was 3")
 
         else:
-            print("You can oly choose from the 3 options")
+            print("You can only choose from the 3 options")
             main()
 
     except:
