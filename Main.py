@@ -5,7 +5,26 @@ class Contacts:
         self.Phone_num = phone_num
         self.Birthday = birthday
 
+    def set_name(self, name): #still need to work on this
+        if isinstance(name, str):
+            self.name = name
+        else:
+            raise TypeError("Name should be string")
+
 #def create_new_contact():
+
+def search_for_contact():
+    #Just for checking
+    name = input("Name?")
+    with open("Contacts.txt", 'r') as MyFile:
+        line = MyFile.readline()
+        while line != "":
+            newline = line.split(",")
+            print("2", line.strip("\n")) ####
+            if newline[0] == name:
+                print("3", newline) ###
+                main()
+            line = MyFile.readline()
 
 def main():
     try:
@@ -28,6 +47,7 @@ def main():
     4)Birthday
     Answer"""))
             print(choice2)
+            search_for_contact()
 
         elif choice == 3:
             print("Your choice was 3")
@@ -39,5 +59,5 @@ def main():
     except:
         print("Please choose one by inserting an integer")
         main()
-
+search_for_contact()
 main()
