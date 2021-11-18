@@ -13,9 +13,8 @@ class Contacts:
 
 
 def search_for_contact(choice2):
-    # Still need to change the method where it calls the main() as it's stopping at the first found element/no duplicates are found
     if choice2 == 1:
-        name = input("Name?")
+        name = input("Name?").title()
         with open("Contacts.txt", 'r') as MyFile:
             line = MyFile.readline()
             while line != "":
@@ -23,11 +22,11 @@ def search_for_contact(choice2):
                 if newline[0] == name:
                     print("This is the contact with the name", name + ":")
                     print(newline)
-                    main()
                 line = MyFile.readline()
+        main()
 
     elif choice2 == 2:
-        phone_num = input("Telephone?")
+        phone_num = input("Telephone?").replace(" ","")
         with open("Contacts.txt", 'r') as MyFile:
             line = MyFile.readline()
             while line != "":
@@ -35,8 +34,8 @@ def search_for_contact(choice2):
                 if newline[2] == phone_num:
                     print("This is the contact with the phone number", phone_num + ":")
                     print(newline)
-                    main()
                 line = MyFile.readline()
+        main()
 
     elif choice2 == 4:
         birthday = input("Enter the birthday in the format dd/mm/yyyy?")
@@ -47,11 +46,11 @@ def search_for_contact(choice2):
                 if newline[3] == birthday:
                     print("This is the contact with the birthday", birthday + ":")
                     print(newline)
-                    main()
                 line = MyFile.readline()
+        main()
 
     elif choice2 == 3:
-        address = input("Address?")
+        address = input("Address?").title()
         with open("Contacts.txt", 'r') as MyFile:
             line = MyFile.readline()
             while line != "":
@@ -59,8 +58,8 @@ def search_for_contact(choice2):
                 if newline[1] == address:
                     print("This is the contact with the address", address + ":")
                     print(newline)
-                    main()
                 line = MyFile.readline()
+        main()
 
 
 def retrieve_all_contacts():
@@ -118,7 +117,7 @@ def change_detail_contact():
     main()
 
 
-def delete_contact():
+def delete_contact():  # maybe proof it a little better
     with open("Contacts.txt", 'r') as myfile:
         lines = myfile.readlines()
     name = input("What is the name of the contact you want to delete")
@@ -127,9 +126,20 @@ def delete_contact():
         for line in lines:
             if line[:length] != name:
                 myfile.write(line)
+    main()
 
 
-#def create_new_contact():
+def create_new_contact():
+    create_name = input("Enter the name of the contact").title()
+
+    create_address = input("Enter the address").title()
+
+    create_phone = input("Enter the phone number of the contact").replace(" ", "")
+
+    create_bday = input("Enter the birthday in the format dd/mm/yyyy")
+    newline = "\n" +create_name + "," + create_address + "," + create_phone + "," + create_bday
+    with open("Contacts.txt", 'a') as myfile:
+        myfile.write(newline)
 
 
 def main():
@@ -144,7 +154,7 @@ def main():
     Answer:"""))
 
         if choice == 1:
-            print("Your choice was one")
+            create_new_contact()
 
         elif choice == 2:
             choice2 = int(input("""How do you want to search for the contact?
