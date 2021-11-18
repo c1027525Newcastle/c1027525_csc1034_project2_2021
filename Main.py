@@ -11,8 +11,6 @@ class Contacts:
         else:
             raise TypeError("Name should be string")
 
-# def create_new_contact():
-
 
 def search_for_contact(choice2):
     # Still need to change the method where it calls the main() as it's stopping at the first found element/no duplicates are found
@@ -102,10 +100,24 @@ def change_detail_contact():
         new_address = input("Enter the new address")
         lines[line_number] = line_to_be_changed[0] + "," + new_address + "," + line_to_be_changed[2] + "," + line_to_be_changed[3] + "\n"
         myfile.close
-
+    elif choice4 == 3:
+        new_birthday = input("Enter the new birthday")
+        lines[line_number] = line_to_be_changed[0] + "," + line_to_be_changed[1] + "," + line_to_be_changed[2] + "," + new_birthday + "\n"
+        myfile.close
+    elif choice4 == 4:
+        new_telephone = input("Enter the new telephone number")
+        lines[line_number] = line_to_be_changed[0] + "," + line_to_be_changed[1] + "," + new_telephone + "," + line_to_be_changed[3] + "\n"
+        myfile.close
+    else:
+        print("Need to choose only from the 4 options available")
+        myfile.close
+        change_detail_contact()
     myfile = open("Contacts.txt", 'w')
     myfile.writelines(lines)
     myfile.close
+
+
+#def create_new_contact():
 
 
 def main():
