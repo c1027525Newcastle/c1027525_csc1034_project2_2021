@@ -63,14 +63,23 @@ def search_for_contact(choice2):
                     main()
                 line = MyFile.readline()
 
+def retrieve_all_contacts():
+    with open("Contacts.txt", 'r') as MyFile:
+        line = MyFile.readline()
+        print("This are all the contacts and their details:\n")
+        while line != "":
+            print(line.rstrip("\n"))
+            line = MyFile.readline()
+
 def main():
     try:
         choice = int(input("""What do you want to do:
     1) Create a new contact
     2) Search for a contact
     3) Retrieve all contacts and their details
+    4) Change the details of a contact
+    5) Close program
     Answer:"""))
-        print(choice)
 
         if choice == 1:
             print("Your choice was one")
@@ -90,10 +99,16 @@ def main():
                 main()
 
         elif choice == 3:
-            print("Your choice was 3")
+            retrieve_all_contacts()
+
+        elif choice == 4:
+            print("Your choice was 4")
+
+        elif choice == 5:
+            print("Closing App")
 
         else:
-            print("You can only choose from the 3 options")
+            print("You can only choose from the 5 options")
             main()
 
     except:
