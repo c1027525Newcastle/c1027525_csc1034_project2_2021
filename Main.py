@@ -13,18 +13,31 @@ class Contacts:
 
 #def create_new_contact():
 
-def search_for_contact():
-    #Just for checking
-    name = input("Name?")
-    with open("Contacts.txt", 'r') as MyFile:
-        line = MyFile.readline()
-        while line != "":
-            newline = line.split(",")
-            print("2", line.strip("\n")) ####
-            if newline[0] == name:
-                print("3", newline) ###
-                main()
+def search_for_contact(choice2):
+    #Still need to change the method where it calls the main() as it's stopping at the first found element/no duplicates are found
+    if choice2 == 1:
+        name = input("Name?")
+        with open("Contacts.txt", 'r') as MyFile:
             line = MyFile.readline()
+            while line != "":
+                newline = line.split(",")
+                if newline[0] == name:
+                    print("This is the contact with the name", name +":")
+                    print(newline)
+                    main()
+                line = MyFile.readline()
+
+    elif choice2 == 2:
+        phone_num = input("Telephone?")
+        with open("Contacts.txt", 'r') as MyFile:
+            line = MyFile.readline()
+            while line != "":
+                newline = line.split(",")
+                if newline[2] == phone_num:
+                    print("This is the contact with the phone number", phone_num +":")
+                    print(newline)
+                    main()
+                line = MyFile.readline()
 
 def main():
     try:
@@ -46,8 +59,7 @@ def main():
     3)Address
     4)Birthday
     Answer"""))
-            print(choice2)
-            search_for_contact()
+            search_for_contact(choice2)
 
         elif choice == 3:
             print("Your choice was 3")
@@ -59,5 +71,5 @@ def main():
     except:
         print("Please choose one by inserting an integer")
         main()
-search_for_contact()
+
 main()
