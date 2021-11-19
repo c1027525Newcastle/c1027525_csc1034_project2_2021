@@ -27,7 +27,6 @@ def search_for_contact(choice2):
                     print("This is the contact with the name", name + ":")
                     print(newline)
                 line = MyFile.readline()
-        main()
 
     elif choice2 == 2:
         phone_num = input("Telephone?").replace(" ", "")
@@ -39,7 +38,6 @@ def search_for_contact(choice2):
                     print("This is the contact with the phone number", phone_num + ":")
                     print(newline)
                 line = MyFile.readline()
-        main()
 
     elif choice2 == 4:
         birthday = input("Enter the birthday in the format dd/mm/yyyy?")
@@ -51,7 +49,6 @@ def search_for_contact(choice2):
                     print("This is the contact with the birthday", birthday + ":")
                     print(newline)
                 line = MyFile.readline()
-        main()
 
     elif choice2 == 3:
         address = input("Address?")
@@ -66,7 +63,6 @@ def search_for_contact(choice2):
                     print("This is the contact with the address", address + ":")
                     print(newline)
                 line = MyFile.readline()
-        main()
 
 
 def retrieve_all_contacts():
@@ -76,8 +72,6 @@ def retrieve_all_contacts():
         while line != "":
             print(line.rstrip("\n"))
             line = MyFile.readline()
-    main()
-
 
 def change_detail_contact():
     name = input("What is the name of the contact you want some details to be changed?").title()
@@ -118,7 +112,6 @@ def change_detail_contact():
     myfile = open("Contacts.txt", 'w')
     myfile.writelines(lines)
     myfile.close
-    main()
 
 
 def delete_contact():  # maybe proof it a little better
@@ -131,7 +124,6 @@ def delete_contact():  # maybe proof it a little better
             # writes every line that is not the line with the chosen name in the file
             if line[:length] != name:
                 myfile.write(line)
-    main()
 
 
 def create_new_contact():
@@ -146,4 +138,3 @@ def create_new_contact():
     new_item = Contacts(create_name, create_address, create_phone, create_bday)
     #print("Here")
     Contacts.add_to_file(new_item)
-    main()

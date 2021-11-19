@@ -1,5 +1,6 @@
 from Main import *
 
+
 def main():
     # this try and except are very broad as it will activate due to any reason in the whole program
     try:
@@ -14,6 +15,7 @@ def main():
 
         if choice == 1:
             create_new_contact()
+            main()
 
         elif choice == 2:
             choice2 = int(input("""How do you want to search for the contact?
@@ -25,18 +27,22 @@ def main():
     Answer"""))
             if choice2 == 1 or choice2 == 2 or choice2 == 3 or choice2 == 4:
                 search_for_contact(choice2)
+                main()
             else:
                 print("You can only choose from the 4 options")
                 main()
 
         elif choice == 3:
             retrieve_all_contacts()
+            main()
 
         elif choice == 4:
             change_detail_contact()
+            main()
 
         elif choice == 5:
             delete_contact()
+            main()
 
         elif choice == 6:
             print("Closing App")
