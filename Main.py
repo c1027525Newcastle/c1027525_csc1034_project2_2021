@@ -5,9 +5,12 @@ class Contacts:
         self.Phone_num = phone_num
         self.Birthday = birthday
 
+    # function to add to file all the details of an element
     def add_to_file(self):
         print("here2")
+        # open the file ussing 'a'(=append)
         with open("Contacts.txt", 'a') as myfile:
+            # added the \n at the beginning to make sure the line is written in a new line
             line_to_be_written = "\n" + self.Name + "," + self.Address + "," + self.Phone_num + "," + self.Birthday
             myfile.write(line_to_be_written)
 
@@ -50,12 +53,15 @@ def search_for_contact(choice2):
         main()
 
     elif choice2 == 3:
-        address = input("Address?").title()
+        address = input("Address?")
         with open("Contacts.txt", 'r') as MyFile:
             line = MyFile.readline()
+            # print("here")
             while line != "":
                 newline = line.rstrip("\n").split(",")
+                # print("here2")
                 if newline[1] == address:
+                    # print("here3")
                     print("This is the contact with the address", address + ":")
                     print(newline)
                 line = MyFile.readline()
