@@ -5,11 +5,10 @@ class Contacts:
         self.Phone_num = phone_num
         self.Birthday = birthday
 
-    def set_name(self, name):  # still need to work on this
-        if isinstance(name, str):
-            self.name = name
-        else:
-            raise TypeError("Name should be string")
+    #def addtofile(self, new_item):
+        #print("here2")
+        #with open("Contacts.txt", 'a') as myfile:
+            #myfile.write(self)
 
 
 def search_for_contact(choice2):
@@ -140,6 +139,9 @@ def create_new_contact():
     newline = "\n" +create_name + "," + create_address + "," + create_phone + "," + create_bday
     with open("Contacts.txt", 'a') as myfile:
         myfile.write(newline)
+    #new_item = Contacts(create_name, create_address, create_phone, create_bday)
+    #print("Here")
+    #Contacts.addtofile(new_item)
 
 
 def main():
