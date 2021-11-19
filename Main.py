@@ -18,6 +18,7 @@ class Contacts:
 
 def search_for_contact(choice2):
     if choice2 == 1:
+        # print("here")
         name = input("Name?").title()
         with open("Contacts.txt", 'r') as MyFile:
             line = MyFile.readline()
@@ -69,6 +70,7 @@ def retrieve_all_contacts():
     with open("Contacts.txt", 'r') as MyFile:
         line = MyFile.readline()
         print("This are all the contacts and their details:\n")
+        # print all the lines until it reaches the EoF(End of file)
         while line != "":
             print(line.rstrip("\n"))
             line = MyFile.readline()
@@ -81,6 +83,7 @@ def change_detail_contact():
         while line != "":
             NewLine = line.rstrip("\n").split(",")
             if NewLine[0] == name:
+                # print(here)
                 print("These are the details of the contact\n", NewLine)
                 LineNumber = count
                 LineToBeChanged = NewLine
@@ -96,6 +99,8 @@ def change_detail_contact():
     4) Telephone"""))
     if choice4 == 1:
         NewName = input("Enter the new name:").title()
+        # TestNewLine = NewName + "," + LineToBeChanged[1] + "," + LineToBeChanged[2] + "," + LineToBeChanged[3] + "\n"
+        # print(TestNewLine)  to see if the line is written as intended
         lines[LineNumber] = NewName + "," + LineToBeChanged[1] + "," + LineToBeChanged[2] + "," + LineToBeChanged[3] + "\n"
     elif choice4 == 2:
         NewAddress = input("Enter the new address")

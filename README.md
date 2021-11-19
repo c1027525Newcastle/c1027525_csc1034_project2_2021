@@ -8,7 +8,7 @@ where a class method is being called to save the NewContact to the Contacts.txt 
 
 The application can run endlessly as after all the functions are done, the main()
 function calls itself and restarts choosing process. To be noted one of the chooses is
-to close the application which will stop the main() function from looping
+to close the application which will stop the main() function from looping.
 
 ##Assumption made during the programming cycle of this project
 Planning ahead of the actual moment when I started to program the application helps.
@@ -21,11 +21,13 @@ older codes from highschool.
 
 Another assumption I made is that it's hard to think of all the different methods data
 can be entered and how to make your code "foolproof" against different input data
-(e.g. the user entered a letter where only integers were supposed to be allowed)
+(e.g. the user entered a letter where only integers were supposed to be allowed).
 
 ##How to run the application
 The application can be used smoothly by running the Interface.py file as it acts as an
 interface for the application.
+
+The application does not have a CLI thus the only way to use it is the one described up.
 
 ##How to use the application with input data
 By running the Interface.py file the application has an interface that allows the user to
