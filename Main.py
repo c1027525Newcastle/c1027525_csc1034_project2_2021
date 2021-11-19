@@ -5,10 +5,11 @@ class Contacts:
         self.Phone_num = phone_num
         self.Birthday = birthday
 
-    #def addtofile(self, new_item):
-        #print("here2")
-        #with open("Contacts.txt", 'a') as myfile:
-            #myfile.write(self)
+    def add_to_file(self):
+        print("here2")
+        with open("Contacts.txt", 'a') as myfile:
+            line_to_be_written = "\n" + self.Name + "," + self.Address + "," + self.Phone_num + "," + self.Birthday
+            myfile.write(line_to_be_written)
 
 
 def search_for_contact(choice2):
@@ -25,7 +26,7 @@ def search_for_contact(choice2):
         main()
 
     elif choice2 == 2:
-        phone_num = input("Telephone?").replace(" ","")
+        phone_num = input("Telephone?").replace(" ", "")
         with open("Contacts.txt", 'r') as MyFile:
             line = MyFile.readline()
             while line != "":
@@ -93,22 +94,17 @@ def change_detail_contact():
     if choice4 == 1:
         new_name = input("Enter the new name:")
         lines[line_number] = new_name + "," + line_to_be_changed[1] + "," + line_to_be_changed[2] + "," + line_to_be_changed[3] + "\n"
-        myfile.close
     elif choice4 == 2:
         new_address = input("Enter the new address")
         lines[line_number] = line_to_be_changed[0] + "," + new_address + "," + line_to_be_changed[2] + "," + line_to_be_changed[3] + "\n"
-        myfile.close
     elif choice4 == 3:
         new_birthday = input("Enter the new birthday")
         lines[line_number] = line_to_be_changed[0] + "," + line_to_be_changed[1] + "," + line_to_be_changed[2] + "," + new_birthday + "\n"
-        myfile.close
     elif choice4 == 4:
         new_telephone = input("Enter the new telephone number")
         lines[line_number] = line_to_be_changed[0] + "," + line_to_be_changed[1] + "," + new_telephone + "," + line_to_be_changed[3] + "\n"
-        myfile.close
     else:
         print("Need to choose only from the 4 options available")
-        myfile.close
         change_detail_contact()
     myfile = open("Contacts.txt", 'w')
     myfile.writelines(lines)
@@ -136,12 +132,11 @@ def create_new_contact():
     create_phone = input("Enter the phone number of the contact").replace(" ", "")
 
     create_bday = input("Enter the birthday in the format dd/mm/yyyy")
-    newline = "\n" +create_name + "," + create_address + "," + create_phone + "," + create_bday
-    with open("Contacts.txt", 'a') as myfile:
-        myfile.write(newline)
-    #new_item = Contacts(create_name, create_address, create_phone, create_bday)
-    #print("Here")
-    #Contacts.addtofile(new_item)
+    # Make the new_item an element of the class
+    new_item = Contacts(create_name, create_address, create_phone, create_bday)
+    print("Here")
+    Contacts.add_to_file(new_item)
+    return new_item
 
 
 def main():
